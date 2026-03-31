@@ -325,7 +325,13 @@ void MainWindow::onOpenExternalApp()
 {
     QString currentDir = QCoreApplication::applicationDirPath();
 
+#ifdef Q_OS_WIN
     QString appFileName = "uwbtools.exe";
+#elif defined(Q_OS_MACOS)
+    QString appFileName = "uwbtools.app/Contents/MacOS/uwbtools";
+#else
+    QString appFileName = "uwbtools";
+#endif
     QString appPath = currentDir + "/" + appFileName;
 
     QFileInfo bInfo(appPath);
