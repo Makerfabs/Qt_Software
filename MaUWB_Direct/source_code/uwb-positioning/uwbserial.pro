@@ -31,3 +31,9 @@ RESOURCES += \
     assets.qrc
 
 win32: RC_ICONS = logo.ico
+
+macx {
+    CONFIG += sdk_no_version_check
+    QMAKE_LIBS_OPENGL = -framework OpenGL
+    LIBS -= -framework AGL
+}
